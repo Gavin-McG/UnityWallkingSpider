@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb; //player's rigidbbody
     private BodyTarget bt; //player's BodyTarget
     private HoldManager hm; //player's HoldManager
+    private MoveWithLegs ml;
 
     private GameObject[] objects; //All potential objects to place object onto
     private List<Collider> colliders = new List<Collider>(); // colliders of platforms
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         bt = GetComponent<BodyTarget>();
         hm = GetComponent<HoldManager>();
+        ml = GetComponent<MoveWithLegs>();
 
         //get colliders of all pickupable objects
         objects = GameObject.FindGameObjectsWithTag("Object");
@@ -116,6 +118,8 @@ public class PlayerController : MonoBehaviour
 
             //force of jump
             rb.AddForce(jumpPower * (Quaternion.AngleAxis(jumpAngle, transform.right) * transform.up) * (0.3f + 0.7f * jumpTime / chargeDuration));
+            rb.velocity += ml.averageVelocity;
+            Debug.Log(ml.averageVelocity);
         }
 
 

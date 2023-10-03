@@ -40,7 +40,8 @@ public class CastFromObject : MonoBehaviour
     [HideInInspector] public Vector3 castPoint; //holds the point the object will be cast onto
     [HideInInspector] public Collider castCollider; //The specific collider that was hit when casting
     [HideInInspector] public bool isConnected; //used by other scripts to determine when the body is touching the ground
-    
+
+    private TrackCollider tc;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,7 @@ public class CastFromObject : MonoBehaviour
 
         rb = movementObject.GetComponent<Rigidbody>();
         castCollider = new Collider();
+        tc = GetComponent<TrackCollider>();
     }
 
 
@@ -83,6 +85,16 @@ public class CastFromObject : MonoBehaviour
             TestUpwardsRayCasts();
 
             TestDownwardsRayCasts();
+
+            if (isConnected && castCollider.transform.CompareTag("Moving"))
+            {
+                tc.setCollider(castCollider);
+                tc.enabled = true;
+            }
+            else
+            {
+                tc.enabled = false;
+            }
 
             //draw cast normal in scene view
             Debug.DrawRay(castPoint, castNormal, Color.yellow);

@@ -8,6 +8,7 @@ public class ReachZone : MonoBehaviour
     //Move an object to taget a given object in a way that resembles walking
 
     [SerializeField] GameObject zone; //object to target
+    private TrackCollider zoneTrack;
     private CastFromObject zoneCast;
 
     [SerializeField] GameObject centerObject;
@@ -41,6 +42,7 @@ public class ReachZone : MonoBehaviour
         transform.position = zone.transform.position;
 
         zoneCast = zone.GetComponent<CastFromObject>();
+        zoneTrack = zone.GetComponent<TrackCollider>();
 
         rb = centerObject.GetComponent<Rigidbody>();
         bt = centerObject.GetComponent<BodyTarget>();
@@ -50,7 +52,7 @@ public class ReachZone : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         //if the leg is far enough away from the zone then take a step
         if (!isStepping && canStep && (zone.transform.position - transform.position).magnitude > zoneRange)
@@ -62,8 +64,10 @@ public class ReachZone : MonoBehaviour
             //randomize step start time for more realistic walk cycle
             Invoke("beginStep", Random.Range(0, stepDuration / 2));
         }
+    }
 
-
+    void Update()
+    {
         //approach default position while jumping/falling
         if (!zoneCast.isConnected)
         {
@@ -100,6 +104,12 @@ public class ReachZone : MonoBehaviour
             //reset fallTime
             fallTime = 0;
         }
+        //Debug.Log(zoneTrack.velocity);
+
+        transform.position += zoneTrack.velocity * Time.deltaTime;
+        start += zoneTrack.velocity * Time.deltaTime;
+        mid += zoneTrack.velocity * Time.deltaTime;
+        end += zoneTrack.velocity * Time.deltaTime;
     }
 
     private void beginStep()

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MoveWithLegs : MonoBehaviour
 {
+    public Vector3 averageVelocity;
 
-    private StickToCollider[] stickToColliders;
+    private TrackCollider[] trackColliders;
     private HoldManager hm;
     private BodyTarget bt;
 
@@ -14,7 +15,7 @@ public class MoveWithLegs : MonoBehaviour
     {
         hm = GetComponent<HoldManager>();
         bt = GetComponent<BodyTarget>();
-        stickToColliders = transform.parent.Find("Leg Points").GetComponentsInChildren<StickToCollider>();
+        trackColliders = transform.parent.Find("Sensor Zones").GetComponentsInChildren<TrackCollider>();
 
     }
 
@@ -23,15 +24,14 @@ public class MoveWithLegs : MonoBehaviour
     {
         if (bt.isGrounded)
         {
-            Vector3 averageVelocity = Vector3.zero;
-            for (int i = 0; i < stickToColliders.Length; i++)
+            averageVelocity = Vector3.zero;
+            for (int i = 0; i < trackColliders.Length; i++)
             {
-                averageVelocity += stickToColliders[i].GetVelocity();
+                averageVelocity += trackColliders[i].velocity;
             }
             averageVelocity /= 8;
             
-            transform.position += averageVelocity;
+            transform.position += averageVelocity*Time.deltaTime;
         }
-
     }
 }

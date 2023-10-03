@@ -15,7 +15,8 @@ public class HoldManager : MonoBehaviour
 
     private ReachZone[] reachZones;
     private FollowObject[] followObjects;
-    private HoldPosition holdPosition;
+    private HoldPosition hp;
+    private MoveWithLegs ml;
     private Rigidbody objRb;
 
     // Start is called before the first frame update
@@ -31,7 +32,8 @@ public class HoldManager : MonoBehaviour
             followObjects[i] = legs[i].target.GetComponent<FollowObject>();
         }
 
-        holdPosition = GetComponent<HoldPosition>();
+        hp = GetComponent<HoldPosition>();
+        ml = GetComponent<MoveWithLegs>();
     }
 
     //drop object
@@ -54,12 +56,12 @@ public class HoldManager : MonoBehaviour
         {
             reachZones[i].enabled = true;
         }
-        holdPosition.enabled = false;
+        hp.enabled = false;
 
         //reset drag
         objRb.drag = 0.0f;
         //set velocity to this object's plus throw velocity
-        objRb.velocity = GetComponent<Rigidbody>().velocity + transform.rotation * new Vector3(0,1,1) * dropForce;
+        objRb.velocity = GetComponent<Rigidbody>().velocity + transform.rotation * new Vector3(0,1,1) * dropForce + ml.averageVelocity;
         //limit velocity to speed limit (prevents super long throws when jumping
         if (objRb.velocity.magnitude > speedLimit)
         {
@@ -96,8 +98,8 @@ public class HoldManager : MonoBehaviour
         }
 
         //update holdPosition with new object
-        holdPosition.UpdateObj(obj);
-        holdPosition.enabled = true;
+        hp.UpdateObj(obj);
+        hp.enabled = true;
 
         //set drag of object for more natural-looking holding
         objRb.drag = 0.7f;
