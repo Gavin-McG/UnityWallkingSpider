@@ -107,8 +107,8 @@ public class ReachZone : MonoBehaviour
         //Debug.Log(zoneTrack.velocity);
 
         transform.position += zoneTrack.velocity * Time.deltaTime;
-        start += zoneTrack.velocity * Time.deltaTime;
-        mid += zoneTrack.velocity * Time.deltaTime;
+        start += rb.velocity * Time.deltaTime;
+        mid += rb.velocity * Time.deltaTime;
         end += zoneTrack.velocity * Time.deltaTime;
     }
 

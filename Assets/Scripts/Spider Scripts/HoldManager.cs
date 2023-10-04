@@ -67,7 +67,7 @@ public class HoldManager : MonoBehaviour
         }
 
         //set collider of object back on
-        obj.GetComponent<Collider>().enabled = true;
+        obj.GetComponent<Collider>().isTrigger = false;
     }
 
     //pickup Object
@@ -103,6 +103,6 @@ public class HoldManager : MonoBehaviour
         objRb.drag = 0.7f;
 
         //prevent object from hitting spider when jumping
-        obj.GetComponent<Collider>().enabled = false;
+        obj.GetComponent<Collider>().isTrigger = true;
     }
 }

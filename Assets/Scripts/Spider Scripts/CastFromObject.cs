@@ -160,7 +160,7 @@ public class CastFromObject : MonoBehaviour
             for (int j = 0; j < colliders.Count; j++)
             {
                 //update values if theres a shorts collider in direction of this ray
-                if (colliders[j].Raycast(ray, out hit, maxRange) && hit.distance < minDist)
+                if (colliders[j].Raycast(ray, out hit, maxRange) && hit.distance < minDist && !hit.collider.isTrigger)
                 {
                     //update values for this ray
                     rayAngle = Vector3.Angle(-hit.normal, castDirF);
@@ -209,7 +209,7 @@ public class CastFromObject : MonoBehaviour
             //find the collider with the lowest distance to the ray
             for (int j = 0; j < colliders.Count; j++)
             {
-                if (colliders[j].Raycast(ray, out hit, maxRange) && hit.distance < minDist)
+                if (colliders[j].Raycast(ray, out hit, maxRange) && hit.distance < minDist && !hit.collider.isTrigger)
                 {
                     //update values if an intersection's been found
                     castNormal = hit.normal;
