@@ -17,13 +17,13 @@ public class HarmonicMovement : MonoBehaviour
     {
         originalPos = transform.position;
         rb = GetComponent<Rigidbody>();
+        Physics.autoSyncTransforms = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 newPos = Mathf.Sin(Time.timeSinceLevelLoad * frequency * 2 * Mathf.PI) * offset + originalPos;
-        rb.MovePosition(newPos);
         transform.position = (newPos);
     }
 }
