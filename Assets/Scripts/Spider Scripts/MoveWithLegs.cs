@@ -9,12 +9,14 @@ public class MoveWithLegs : MonoBehaviour
     private TrackCollider[] trackColliders;
     private HoldManager hm;
     private BodyTarget bt;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         hm = GetComponent<HoldManager>();
         bt = GetComponent<BodyTarget>();
+        rb = GetComponent<Rigidbody>();
         trackColliders = transform.parent.Find("Sensor Zones").GetComponentsInChildren<TrackCollider>();
 
     }

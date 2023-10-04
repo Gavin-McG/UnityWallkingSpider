@@ -12,6 +12,7 @@ public class BodyTarget : MonoBehaviour
     public float rotateStrength; //Strength that the body rotates towards the average leg normal
     public bool isGrounded; //whther any of the legs are touching the floor
     public float gravity; //force of gravity when no legs are touching the ground
+    public float velMultiplier;
     public bool applyForce; //whether the rotation and forces should be applied (used in jumping process)
     
     //components
@@ -45,6 +46,7 @@ public class BodyTarget : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         //Find the average nornal of all of the points the leg are on and whether its on the ground
         Vector3 averageNormal = Vector3.zero;
         isGrounded = false;
@@ -63,6 +65,7 @@ public class BodyTarget : MonoBehaviour
         {
             if (isGrounded)
             {
+                rb.velocity *= velMultiplier;
                 //update rotation direction w/ attempt to smooth movement
                 rotDirection = 0.7f * Vector3.Cross(transform.up, averageNormal) + 0.3f * rotDirection;
                 //Rotate the body towards the direction of the average normal

@@ -22,6 +22,8 @@ public class HarmonicMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.MovePosition(Mathf.Sin(Time.timeSinceLevelLoad*frequency * 2*Mathf.PI)*offset + originalPos);
+        Vector3 newPos = Mathf.Sin(Time.timeSinceLevelLoad * frequency * 2 * Mathf.PI) * offset + originalPos;
+        rb.MovePosition(newPos);
+        transform.position = (newPos);
     }
 }
