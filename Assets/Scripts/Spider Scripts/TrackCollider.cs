@@ -41,9 +41,10 @@ public class TrackCollider : MonoBehaviour
     {
         if (mainCollider != null)
         {
-            //Quaternion rotDifference = stepCollider.transform.rotation * Quaternion.Inverse(previousRotation);
-            //transform.position = rotDifference*(transform.position - previousPosition) + stepCollider.transform.position;
-            velocity = (mainCollider.transform.position - colliderPosition) / Time.deltaTime;
+            Quaternion rotDifference = mainCollider.transform.rotation * Quaternion.Inverse(colliderRotation);
+            velocity = mainCollider.transform.position + rotDifference*(transform.position - colliderPosition) - transform.position;
+            velocity /= Time.deltaTime;
+            //velocity = (mainCollider.transform.position - colliderPosition) / Time.deltaTime;
             //Debug.Log(velocity);
         }
     }

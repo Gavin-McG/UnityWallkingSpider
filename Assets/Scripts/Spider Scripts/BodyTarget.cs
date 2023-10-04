@@ -11,7 +11,7 @@ public class BodyTarget : MonoBehaviour
     public float attractStength; //strength that the body is attracted towards heightOffset
     public float rotateStrength; //Strength that the body rotates towards the average leg normal
     public bool isGrounded; //whther any of the legs are touching the floor
-    public float gravity; //force of gravity when no legs are touching the ground
+    //public float gravity; //force of gravity when no legs are touching the ground
     public float velMultiplier;
     public bool applyForce; //whether the rotation and forces should be applied (used in jumping process)
     
@@ -94,6 +94,7 @@ public class BodyTarget : MonoBehaviour
         {
             rb.drag = drag;
             rb.angularDrag = angularDrag;
+            rb.useGravity = false;
             if (applyForce)
             {
                 pc.canJump = true;
@@ -103,7 +104,8 @@ public class BodyTarget : MonoBehaviour
         {
             rb.drag = 0.1f;
             rb.angularDrag = 0.1f;
-            rb.AddForce(Vector3.up * -gravity);
+            rb.useGravity = true;
+            //rb.AddForce(Vector3.up * -gravity);
             pc.canJump = false;
         }
 
