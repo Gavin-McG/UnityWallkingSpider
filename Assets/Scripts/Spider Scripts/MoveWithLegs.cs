@@ -5,6 +5,8 @@ using UnityEngine;
 public class MoveWithLegs : MonoBehaviour
 {
     public Vector3 averageVelocity;
+    public float followForce;
+    public float followThreshold;
 
     private TrackCollider[] trackColliders;
     private HoldManager hm;
@@ -22,7 +24,7 @@ public class MoveWithLegs : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         if (bt.isGrounded)
         {
@@ -32,8 +34,9 @@ public class MoveWithLegs : MonoBehaviour
                 averageVelocity += trackColliders[i].velocity;
             }
             averageVelocity /= 8;
-            
-            transform.position += averageVelocity*Time.deltaTime;
+
+            Vector3 offset = averageVelocity - rb.velocity;
+            rb.AddForce(offset.normalized * Mathf.Min(offset.magnitude, followThreshold) * followForce);
         }
     }
 }

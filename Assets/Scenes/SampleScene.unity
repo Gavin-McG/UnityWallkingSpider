@@ -136,9 +136,9 @@ GameObject:
   - component: {fileID: 38893702}
   - component: {fileID: 38893701}
   - component: {fileID: 38893704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zone 7
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +364,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &149958434
 GameObject:
@@ -378,9 +378,9 @@ GameObject:
   - component: {fileID: 149958437}
   - component: {fileID: 149958436}
   - component: {fileID: 149958439}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Point 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -582,7 +582,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &184692881
 GameObject:
@@ -696,7 +696,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &243603100
 GameObject:
@@ -710,9 +710,9 @@ GameObject:
   - component: {fileID: 243603104}
   - component: {fileID: 243603103}
   - component: {fileID: 243603101}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Point 6
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -814,7 +814,7 @@ GameObject:
   - component: {fileID: 245274979}
   - component: {fileID: 245274978}
   - component: {fileID: 245274977}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -913,9 +913,9 @@ GameObject:
   - component: {fileID: 321009301}
   - component: {fileID: 321009300}
   - component: {fileID: 321009303}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zone 8
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1041,7 +1041,7 @@ GameObject:
   - component: {fileID: 343496242}
   - component: {fileID: 343496241}
   - component: {fileID: 343496240}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1139,7 +1139,7 @@ GameObject:
   - component: {fileID: 348798203}
   - component: {fileID: 348798202}
   - component: {fileID: 348798201}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 420162234}
   - component: {fileID: 420162233}
   - component: {fileID: 420162232}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1321,6 +1321,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420162230}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &451264165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451264166}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &451264166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451264165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &505881263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1364,7 @@ GameObject:
   - component: {fileID: 505881267}
   - component: {fileID: 505881266}
   - component: {fileID: 505881265}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (4)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1430,7 +1461,7 @@ GameObject:
   - component: {fileID: 551620930}
   - component: {fileID: 551620929}
   - component: {fileID: 551620928}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1528,9 +1559,9 @@ GameObject:
   - component: {fileID: 687506949}
   - component: {fileID: 687506951}
   - component: {fileID: 687506952}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sensor 7
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1544,7 +1575,7 @@ Transform:
   m_GameObject: {fileID: 687506947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2, y: 0, z: 4}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1233819672}
@@ -1734,7 +1765,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &722720922
 GameObject:
@@ -1748,9 +1779,9 @@ GameObject:
   - component: {fileID: 722720926}
   - component: {fileID: 722720925}
   - component: {fileID: 722720923}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Point 3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1888,7 +1919,7 @@ Transform:
   - {fileID: 1262910288}
   - {fileID: 1224129465}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854322180
 GameObject:
@@ -1902,7 +1933,7 @@ GameObject:
   - component: {fileID: 854322183}
   - component: {fileID: 854322182}
   - component: {fileID: 854322181}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2000,7 +2031,7 @@ GameObject:
   - component: {fileID: 859634387}
   - component: {fileID: 859634386}
   - component: {fileID: 859634385}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2097,9 +2128,9 @@ GameObject:
   - component: {fileID: 863771638}
   - component: {fileID: 863771637}
   - component: {fileID: 863771635}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Point 5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2201,9 +2232,9 @@ GameObject:
   - component: {fileID: 895539714}
   - component: {fileID: 895539713}
   - component: {fileID: 895539711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Point 4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2306,9 +2337,9 @@ GameObject:
   - component: {fileID: 915537436}
   - component: {fileID: 915537434}
   - component: {fileID: 915537439}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Point 7
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2424,9 +2455,9 @@ GameObject:
   - component: {fileID: 921752988}
   - component: {fileID: 921752987}
   - component: {fileID: 921752985}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Point 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2527,7 +2558,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2612,7 +2643,7 @@ GameObject:
   - component: {fileID: 973348779}
   - component: {fileID: 973348778}
   - component: {fileID: 973348777}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2708,7 +2739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1011552471}
   - component: {fileID: 1011552470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2750,7 +2781,7 @@ Transform:
   - {fileID: 1233819672}
   - {fileID: 1879119598}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1041729631
 GameObject:
@@ -2764,7 +2795,7 @@ GameObject:
   - component: {fileID: 1041729635}
   - component: {fileID: 1041729634}
   - component: {fileID: 1041729633}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2862,7 +2893,7 @@ GameObject:
   - component: {fileID: 1062957285}
   - component: {fileID: 1062957284}
   - component: {fileID: 1062957283}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2960,9 +2991,9 @@ GameObject:
   - component: {fileID: 1178367200}
   - component: {fileID: 1178367198}
   - component: {fileID: 1178367203}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Point 8
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3080,7 +3111,7 @@ GameObject:
   - component: {fileID: 1224129467}
   - component: {fileID: 1224129466}
   - component: {fileID: 1224129470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (6)
   m_TagString: Moving
   m_Icon: {fileID: 0}
@@ -3114,7 +3145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5397513444d51743b6e2ce2ceab3df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 30}
+  offset: {x: 0, y: 0, z: 5}
   frequency: 0.2
 --- !u!65 &1224129467
 BoxCollider:
@@ -3187,11 +3218,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224129464}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
@@ -3204,9 +3235,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1233819672}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sensor Zones
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3243,7 +3274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1262910288}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3278,9 +3309,9 @@ GameObject:
   - component: {fileID: 1274668347}
   - component: {fileID: 1274668346}
   - component: {fileID: 1274668348}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BodyBackMesh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3377,9 +3408,9 @@ GameObject:
   - component: {fileID: 1283442549}
   - component: {fileID: 1283442552}
   - component: {fileID: 1283442553}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sensor 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3443,7 +3474,7 @@ Transform:
   m_GameObject: {fileID: 1283442548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2, y: 0, z: -2}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1233819672}
@@ -3504,9 +3535,9 @@ GameObject:
   - component: {fileID: 1298624829}
   - component: {fileID: 1298624828}
   - component: {fileID: 1298624831}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zone 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3632,7 +3663,7 @@ GameObject:
   - component: {fileID: 1302470368}
   - component: {fileID: 1302470367}
   - component: {fileID: 1302470366}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3741,9 +3772,9 @@ GameObject:
   - component: {fileID: 1322194526}
   - component: {fileID: 1322194525}
   - component: {fileID: 1322194524}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3778,7 +3809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9375feb375a914cbc6bce5e1b3408e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4800
+  speed: 19000
   rotateSpeed: 1600
   canJump: 1
   jumpPower: 3250
@@ -3804,7 +3835,7 @@ MonoBehaviour:
   rotateStrength: 100
   isGrounded: 1
   gravity: 120
-  velMultiplier: 0.88
+  velMultiplier: 0.8
   applyForce: 1
 --- !u!114 &1322194524
 MonoBehaviour:
@@ -3989,7 +4020,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!114 &1322194533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4053,6 +4084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   averageVelocity: {x: 0, y: 0, z: 0}
+  followForce: 30
+  followThreshold: 10000
 --- !u!1 &1338656406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,9 +4099,9 @@ GameObject:
   - component: {fileID: 1338656408}
   - component: {fileID: 1338656410}
   - component: {fileID: 1338656411}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sensor 8
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4082,7 +4115,7 @@ Transform:
   m_GameObject: {fileID: 1338656406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 0, z: 4}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1233819672}
@@ -4192,7 +4225,7 @@ GameObject:
   - component: {fileID: 1519393651}
   - component: {fileID: 1519393650}
   - component: {fileID: 1519393649}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4290,9 +4323,9 @@ GameObject:
   - component: {fileID: 1529591359}
   - component: {fileID: 1529591361}
   - component: {fileID: 1529591362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sensor 3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4306,7 +4339,7 @@ Transform:
   m_GameObject: {fileID: 1529591357}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1233819672}
@@ -4418,7 +4451,7 @@ GameObject:
   - component: {fileID: 1547225308}
   - component: {fileID: 1547225307}
   - component: {fileID: 1547225306}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Moving
   m_Icon: {fileID: 0}
@@ -4447,11 +4480,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547225305}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
@@ -4532,7 +4565,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1651412952
 GameObject:
@@ -4546,7 +4579,7 @@ GameObject:
   - component: {fileID: 1651412956}
   - component: {fileID: 1651412955}
   - component: {fileID: 1651412957}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4644,7 +4677,7 @@ GameObject:
   - component: {fileID: 1652402654}
   - component: {fileID: 1652402653}
   - component: {fileID: 1652402652}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4741,7 +4774,7 @@ GameObject:
   - component: {fileID: 1674071043}
   - component: {fileID: 1674071042}
   - component: {fileID: 1674071041}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4839,9 +4872,9 @@ GameObject:
   - component: {fileID: 1743851466}
   - component: {fileID: 1743851469}
   - component: {fileID: 1743851470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sensor 4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4905,7 +4938,7 @@ Transform:
   m_GameObject: {fileID: 1743851464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1233819672}
@@ -4966,9 +4999,9 @@ GameObject:
   - component: {fileID: 1760260089}
   - component: {fileID: 1760260088}
   - component: {fileID: 1760260091}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zone 6
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5095,9 +5128,9 @@ GameObject:
   - component: {fileID: 1772306398}
   - component: {fileID: 1772306400}
   - component: {fileID: 1772306401}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sensor 6
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5111,7 +5144,7 @@ Transform:
   m_GameObject: {fileID: 1772306396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 0, z: 2}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1233819672}
@@ -5222,9 +5255,9 @@ GameObject:
   - component: {fileID: 1825716454}
   - component: {fileID: 1825716456}
   - component: {fileID: 1825716457}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sensor 5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5238,7 +5271,7 @@ Transform:
   m_GameObject: {fileID: 1825716452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: 0, z: 2}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1233819672}
@@ -5345,9 +5378,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1856258479}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Zones
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5384,9 +5417,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1879119598}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Points
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5427,9 +5460,9 @@ GameObject:
   - component: {fileID: 1976102993}
   - component: {fileID: 1976102992}
   - component: {fileID: 1976102995}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zone 5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5556,9 +5589,9 @@ GameObject:
   - component: {fileID: 2002570950}
   - component: {fileID: 2002570949}
   - component: {fileID: 2002570952}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zone 4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5684,7 +5717,7 @@ GameObject:
   - component: {fileID: 2035547671}
   - component: {fileID: 2035547670}
   - component: {fileID: 2035547669}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5781,9 +5814,9 @@ GameObject:
   - component: {fileID: 2043700368}
   - component: {fileID: 2043700367}
   - component: {fileID: 2043700369}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BodyFrontMesh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5879,9 +5912,9 @@ GameObject:
   - component: {fileID: 2109499956}
   - component: {fileID: 2109499958}
   - component: {fileID: 2109499959}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sensor 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5895,7 +5928,7 @@ Transform:
   m_GameObject: {fileID: 2109499954}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 0, z: -2}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1233819672}
@@ -6006,9 +6039,9 @@ GameObject:
   - component: {fileID: 2126525902}
   - component: {fileID: 2126525901}
   - component: {fileID: 2126525904}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zone 3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6135,9 +6168,9 @@ GameObject:
   - component: {fileID: 2132783707}
   - component: {fileID: 2132783706}
   - component: {fileID: 2132783709}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zone 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6263,7 +6296,7 @@ GameObject:
   - component: {fileID: 2140339658}
   - component: {fileID: 2140339657}
   - component: {fileID: 2140339656}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}

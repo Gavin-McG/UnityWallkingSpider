@@ -19,6 +19,7 @@ public class BodyTarget : MonoBehaviour
     private CastFromObject[] castObjects;
     private Rigidbody rb;
     private PlayerController pc;
+    private MoveWithLegs ml;
 
     //stores initial vlaues for drag to switch between
     private float drag;
@@ -33,6 +34,7 @@ public class BodyTarget : MonoBehaviour
         //get components
         rb = GetComponent<Rigidbody>();
         pc = GetComponent<PlayerController>();
+        ml = GetComponent<MoveWithLegs>();
         castObjects = transform.parent.transform.Find("Sensor Zones").GetComponentsInChildren<CastFromObject>();
 
         //save initial drag values
@@ -65,7 +67,7 @@ public class BodyTarget : MonoBehaviour
         {
             if (isGrounded)
             {
-                rb.velocity *= velMultiplier;
+                rb.velocity = ml.averageVelocity + (rb.velocity-ml.averageVelocity)*velMultiplier;
                 //update rotation direction w/ attempt to smooth movement
                 rotDirection = 0.7f * Vector3.Cross(transform.up, averageNormal) + 0.3f * rotDirection;
                 //Rotate the body towards the direction of the average normal
