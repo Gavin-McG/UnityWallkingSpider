@@ -37,6 +37,17 @@ public class MoveWithLegs : MonoBehaviour
 
             Vector3 offset = averageVelocity - rb.velocity;
             rb.AddForce(offset.normalized * Mathf.Min(offset.magnitude, followThreshold) * followForce);
+
+            rb.MoveRotation(trackColliders[0].angularVel * rb.rotation);
+
+
+            /*Quaternion newRotation = Quaternion.identity;
+            for (int i = trackColliders.Length-1; i >= 0;i--)
+            {
+                newRotation *= Quaternion.Slerp(Quaternion.identity, trackColliders[i].angularVel, 1.0f / trackColliders.Length);
+            }
+            newRotation *= rb.rotation;
+            rb.MoveRotation(newRotation);*/
         }
     }
 }

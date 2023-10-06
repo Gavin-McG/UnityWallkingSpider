@@ -7,6 +7,7 @@ public class TrackCollider : MonoBehaviour
     public Collider mainCollider;
     private Rigidbody objRb;
     public Vector3 velocity;
+    public Quaternion angularVel;
 
     private Vector3 colliderPosition;
     private Quaternion colliderRotation;
@@ -15,12 +16,13 @@ public class TrackCollider : MonoBehaviour
     void Start()
     {
         velocity = Vector3.zero;
+        angularVel = Quaternion.identity;
         mainCollider = new Collider();
         objRb = new Rigidbody();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         UpdateVelocity();
         UpdateCollliderData();
@@ -29,6 +31,7 @@ public class TrackCollider : MonoBehaviour
     private void OnDisable()
     {
         velocity = Vector3.zero;
+        angularVel = Quaternion.identity;
     }
 
     private void OnEnable()
@@ -41,11 +44,10 @@ public class TrackCollider : MonoBehaviour
     {
         if (mainCollider != null)
         {
-            Quaternion rotDifference = mainCollider.transform.rotation * Quaternion.Inverse(colliderRotation);
-            velocity = mainCollider.transform.position + rotDifference*(transform.position - colliderPosition) - transform.position;
+            angularVel = mainCollider.transform.rotation * Quaternion.Inverse(colliderRotation);
+            Vector3 newPos = angularVel * (transform.position - colliderPosition) + mainCollider.transform.position;
+            velocity = newPos - transform.position;
             velocity /= Time.deltaTime;
-            //velocity = (mainCollider.transform.position - colliderPosition) / Time.deltaTime;
-            //Debug.Log(velocity);
         }
     }
 
@@ -66,6 +68,7 @@ public class TrackCollider : MonoBehaviour
             objRb = newCollider.transform.GetComponent<Rigidbody>();
             UpdateCollliderData();
             velocity = Vector3.zero;
+            angularVel = Quaternion.identity;
         }
     }
 }
