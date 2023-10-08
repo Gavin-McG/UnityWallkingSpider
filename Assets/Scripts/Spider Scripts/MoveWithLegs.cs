@@ -24,7 +24,7 @@ public class MoveWithLegs : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
         if (bt.isGrounded)
         {
@@ -36,18 +36,10 @@ public class MoveWithLegs : MonoBehaviour
             averageVelocity /= 8;
 
             Vector3 offset = averageVelocity - rb.velocity;
-            rb.AddForce(offset.normalized * Mathf.Min(offset.magnitude, followThreshold) * followForce);
+            //rb.AddForce(offset.normalized * Mathf.Min(offset.magnitude, followThreshold) * followForce);
+            rb.velocity = averageVelocity * followForce + rb.velocity * (1 - followForce);
 
             rb.MoveRotation(trackColliders[0].angularVel * rb.rotation);
-
-
-            /*Quaternion newRotation = Quaternion.identity;
-            for (int i = trackColliders.Length-1; i >= 0;i--)
-            {
-                newRotation *= Quaternion.Slerp(Quaternion.identity, trackColliders[i].angularVel, 1.0f / trackColliders.Length);
-            }
-            newRotation *= rb.rotation;
-            rb.MoveRotation(newRotation);*/
         }
     }
 }

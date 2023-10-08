@@ -2880,6 +2880,14 @@ PrefabInstance:
       propertyPath: detachThreshold
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1503001458577697687, guid: f12ffcb1e0a662a4d86ad1a61ab8966a, type: 3}
+      propertyPath: holdRotation
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503001458577697689, guid: f12ffcb1e0a662a4d86ad1a61ab8966a, type: 3}
+      propertyPath: followForce
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 1503001458714970386, guid: f12ffcb1e0a662a4d86ad1a61ab8966a, type: 3}
       propertyPath: obj
       value: 
