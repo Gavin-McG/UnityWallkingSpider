@@ -2222,11 +2222,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightOffset: 1.4
-  heightMultiplier: 1
   attractStength: 40
   rotateStrength: 100
-  isGrounded: 1
   velMultiplier: 0.8
+  ignoreSensors: 2
+  heightMultiplier: 1
+  isGrounded: 1
   applyForce: 1
 --- !u!114 &3509808588865277214
 MonoBehaviour:

@@ -34,7 +34,6 @@ public class ReachZone : MonoBehaviour
     private Vector3 end;
 
     private Rigidbody rb;
-    private BodyTarget bt;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +44,6 @@ public class ReachZone : MonoBehaviour
         zoneTrack = zone.GetComponent<TrackCollider>();
 
         rb = centerObject.GetComponent<Rigidbody>();
-        bt = centerObject.GetComponent<BodyTarget>();
 
         //offset to approach in free fall
         defaultOffset = zone.transform.position - centerObject.transform.position;

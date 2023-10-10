@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
         {
             //disbale forces from legs temproarily
             bt.applyForce = false;
+            bt.isGrounded = false;
             ml.enabled = false;
             Invoke("EnableBT", 0.3f);
 
@@ -164,7 +165,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                hm.dropObject(0);
+                hm.dropObject(dropForce*0.4f);
             }
             
         }

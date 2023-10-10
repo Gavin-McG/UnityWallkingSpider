@@ -7,13 +7,14 @@ public class BodyTarget : MonoBehaviour
     //Move the body towards a more ideal position using leg data collected from CastFromObjects
 
     public float heightOffset; //ideal height for body to position away from leg height
-    [HideInInspector] public float heightMultiplier = 1; //Used for jumping "animation"
     public float attractStength; //strength that the body is attracted towards heightOffset
     public float rotateStrength; //Strength that the body rotates towards the average leg normal
-    public bool isGrounded; //whther any of the legs are touching the floor
-    //public float gravity; //force of gravity when no legs are touching the ground
     public float velMultiplier;
-    public bool applyForce; //whether the rotation and forces should be applied (used in jumping process)
+    public int ignoreSensors; //number of outlier sensors to ignore in rotation
+
+    [HideInInspector] public float heightMultiplier = 1; //Used for jumping "animation"
+    [HideInInspector] public bool isGrounded; //whther any of the legs are touching the floor
+    [HideInInspector] public bool applyForce; //whether the rotation and forces should be applied (used in jumping process)
     
     //components
     private CastFromObject[] castObjects;
@@ -53,17 +54,18 @@ public class BodyTarget : MonoBehaviour
         averageNormal = GetAverageNormal(2);
 
         //spider is grounded if any legs are touching a collider
-        isGrounded = false;
-        for (int i=0;i<castObjects.Length; i++)
-        {
-            if (castObjects[i].isConnected)
-            {
-                isGrounded = true;
-            }
-        }
 
         if (applyForce)
         {
+            isGrounded = false;
+            for (int i = 0; i < castObjects.Length; i++)
+            {
+                if (castObjects[i].isConnected)
+                {
+                    isGrounded = true;
+                }
+            }
+
             if (isGrounded)
             {
                 rb.velocity = ml.averageVelocity + (rb.velocity-ml.averageVelocity)*velMultiplier;
@@ -94,7 +96,7 @@ public class BodyTarget : MonoBehaviour
             rb.drag = drag;
             rb.angularDrag = angularDrag;
             rb.useGravity = false;
-            if (applyForce)
+            if (pc!=null)
             {
                 pc.canJump = true;
             }
@@ -105,7 +107,10 @@ public class BodyTarget : MonoBehaviour
             rb.angularDrag = 0.1f;
             rb.useGravity = true;
             //rb.AddForce(Vector3.up * -gravity);
-            pc.canJump = false;
+            if (pc!=null)
+            {
+                pc.canJump = false;
+            }
         }
 
     }

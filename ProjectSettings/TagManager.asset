@@ -8,6 +8,7 @@ TagManager:
   - Object
   - Wall
   - Moving
+  - Leg Points
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - Moving
   - Spider
-  - 
+  - Pickup
   - 
   - 
   - 
