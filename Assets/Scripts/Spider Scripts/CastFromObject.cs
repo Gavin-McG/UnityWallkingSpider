@@ -34,9 +34,6 @@ public class CastFromObject : MonoBehaviour
     private MoveWithLegs ml;
 
 
-    private GameObject[] platforms; //All potential objects to place object onto
-    private List<Collider> colliders = new List<Collider>(); // colliders of platforms
-
     [HideInInspector] public Vector3 castNormal; //used by other scripts to affect body position
     [HideInInspector] public Vector3 castPoint; //holds the point the object will be cast onto
     [HideInInspector] public Collider castCollider; //The specific collider that was hit when casting
@@ -47,16 +44,6 @@ public class CastFromObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Get all colliders from objects tagged with any of the designated tags
-        for (int i=0;i<tags.Length; i++)
-        {
-            platforms = GameObject.FindGameObjectsWithTag(tags[i]);
-            for (int j = 0; j < platforms.Length; j++)
-            {
-                colliders.Add(platforms[j].GetComponent<Collider>());
-            }
-        }
-
         //If cast direction is a zero vector then the initial relation will be used as castDir
         if (castDir == Vector3.zero)
         {
@@ -73,7 +60,6 @@ public class CastFromObject : MonoBehaviour
 
 
 
-
     // Update is called once per frame
     void Update()
     {
@@ -83,29 +69,30 @@ public class CastFromObject : MonoBehaviour
         //set default values
         ResetRayCastValues();
 
-        if (colliders.Count > 0)
+        
+        TestUpwardsRayCasts();
+
+        if (!isConnected)
         {
-            TestUpwardsRayCasts();
-
             TestDownwardsRayCasts();
-
-            if (isConnected && castCollider.transform.CompareTag("Moving"))
-            {
-                tc.setCollider(castCollider);
-                tc.enabled = true;
-            }
-            else
-            {
-                tc.enabled = false;
-            }
-
-            //draw cast normal in scene view
-            Debug.DrawRay(castPoint, castNormal, Color.yellow);
-
-            //update position and rotation to the position and normal of the position of the best rayCast
-            transform.position = castPoint;
-            transform.LookAt(castNormal+transform.position);
         }
+
+        if (isConnected && castCollider.transform.CompareTag("Moving"))
+        {
+            tc.setCollider(castCollider);
+            tc.enabled = true;
+        }
+        else
+        {
+            tc.enabled = false;
+        }
+
+        //draw cast normal in scene view
+        Debug.DrawRay(castPoint, castNormal, Color.yellow);
+
+        //update position and rotation to the position and normal of the position of the best rayCast
+        transform.position = castPoint;
+        transform.LookAt(castNormal+transform.position);
     }
 
 
@@ -148,38 +135,16 @@ public class CastFromObject : MonoBehaviour
             Vector3 castDirF = Quaternion.AngleAxis(i * -castShift, Vector3.Cross(centerObject.transform.up, castDirRot)) * castDirRot;
             Ray ray = new Ray(centerObject.transform.position, castDirF);
 
-            //default values for this ray
-            float rayAngle = 90;
-            Vector3 rayNormal = Vector3.zero;
-            Vector3 rayPoint = Vector3.zero;
-            float minDist = maxRange;
-            bool didCollide = false;
-            Collider rayCollider = new Collider();
-
             //find the collider with the closest distance to the ray
-            for (int j = 0; j < colliders.Count; j++)
+            //update values if theres a shorts collider in direction of this ray
+            if (Physics.Raycast(ray, out hit, maxRange) && IsInTags(hit.collider.tag) && Vector3.Angle(-hit.normal, castDirF) < bestNormalAngle)
             {
-                //update values if theres a shorts collider in direction of this ray
-                if (colliders[j].Raycast(ray, out hit, maxRange) && hit.distance < minDist && !hit.collider.isTrigger)
-                {
-                    //update values for this ray
-                    rayAngle = Vector3.Angle(-hit.normal, castDirF);
-                    rayNormal = hit.normal;
-                    rayPoint = hit.point;
-                    minDist = hit.distance;
-                    didCollide = true;
-                    rayCollider = colliders[j];
-                }
-            }
-
-            //update values if this ray is a better spot to place leg
-            if (didCollide && rayAngle < bestNormalAngle)
-            {
+                //update values for this ray
+                bestNormalAngle = Vector3.Angle(-hit.normal, castDirF);
                 isConnected = true;
-                bestNormalAngle = rayAngle;
-                castNormal = rayNormal;
-                castPoint = rayPoint;
-                castCollider = rayCollider;
+                castNormal = hit.normal;
+                castPoint = hit.point;
+                castCollider = hit.collider;
             }
         }
     }
@@ -194,31 +159,35 @@ public class CastFromObject : MonoBehaviour
         for (int i = 0; i < castCountDown; i++)
         {
             //stop searching when a platform has been found
-            if (isConnected)
-            {
-                break;
-            }
+            
 
             //direction of the ray
             Vector3 castDirF = Quaternion.AngleAxis(i * castShift, Vector3.Cross(centerObject.transform.up, castDirRot)) * castDirRot;
             Ray ray = new Ray(centerObject.transform.position, castDirF);
 
-            //default value
-            float minDist = maxRange;
 
             //find the collider with the lowest distance to the ray
-            for (int j = 0; j < colliders.Count; j++)
+            if (Physics.Raycast(ray, out hit, maxRange) && IsInTags(hit.collider.tag))
             {
-                if (colliders[j].Raycast(ray, out hit, maxRange) && hit.distance < minDist && !hit.collider.isTrigger)
-                {
-                    //update values if an intersection's been found
-                    castNormal = hit.normal;
-                    castPoint = hit.point;
-                    minDist = hit.distance;
-                    isConnected = true;
-                    castCollider = colliders[j];
-                }
+                //update values if an intersection's been found
+                isConnected = true;
+                castNormal = hit.normal;
+                castPoint = hit.point;
+                castCollider = hit.collider;
+                return;
             }
         }
+    }
+
+    private bool IsInTags(string tag)
+    {
+        for (int i = 0; i<tags.Length; i++) 
+        { 
+            if (string.Compare(tag, tags[i])==0)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

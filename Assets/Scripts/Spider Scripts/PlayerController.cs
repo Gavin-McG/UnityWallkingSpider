@@ -31,8 +31,7 @@ public class PlayerController : MonoBehaviour
     private HoldManager hm; //player's HoldManager
     private MoveWithLegs ml; //player's MoveWithLegs
 
-    private GameObject[] objects; //All potential objects to place object onto
-    private List<Collider> colliders = new List<Collider>(); // colliders of platforms
+    private LayerMask mask;
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +42,7 @@ public class PlayerController : MonoBehaviour
         hm = GetComponent<HoldManager>();
         ml = GetComponent<MoveWithLegs>();
 
-        //get colliders of all pickupable objects
-        objects = GameObject.FindGameObjectsWithTag("Object");
-        for (int i = 0; i < objects.Length; i++)
-        {
-            colliders.Add(objects[i].GetComponent<Collider>());
-        }
+        mask = LayerMask.GetMask("Pickup");
     }
 
     // Update is called once per frame
@@ -150,22 +144,10 @@ public class PlayerController : MonoBehaviour
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
 
-            float minDist = pickupDist;
-            int minIndex = -1;
-
-            for (int i = 0; i < colliders.Count; i++)
+            if (Physics.Raycast(ray, out hit, pickupDist, mask))
             {
-                if (colliders[i].Raycast(ray, out hit, pickupDist) && hit.distance < minDist)
-                {
-                    minDist = hit.distance;
-                    minIndex = i;
-                }
-            }
-
-            //if an object was found then pickup that object
-            if (minIndex != -1)
-            {
-                hm.UpdateObject(colliders[minIndex].gameObject);
+                Debug.DrawLine(ray.origin, hit.point, Color.green);
+                hm.UpdateObject(hit.collider.gameObject);
             }
         }
         //drop object
