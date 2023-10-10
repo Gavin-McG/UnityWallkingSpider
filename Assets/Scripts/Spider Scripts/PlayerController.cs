@@ -72,13 +72,30 @@ public class PlayerController : MonoBehaviour
             //rotate clockwise and counterclockwise
             if (Input.GetKey(KeyCode.A))
             {
-                rb.AddTorque(transform.up * (-rotateSpeed * Time.deltaTime));
-                cancelJump();
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    rb.AddForce(transform.right * -0.9f * speed * Time.deltaTime);
+                    cancelJump();
+                }
+                else
+                {
+                    rb.AddTorque(transform.up * (-rotateSpeed * Time.deltaTime));
+                    //cancelJump();
+                }
             }
             if (Input.GetKey(KeyCode.D))
             {
-                rb.AddTorque(transform.up * (rotateSpeed * Time.deltaTime));
-                cancelJump();
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    rb.AddForce(transform.right * 0.9f * speed * Time.deltaTime);
+                    cancelJump();
+                }
+                else
+                {
+                    rb.AddTorque(transform.up * (rotateSpeed * Time.deltaTime));
+                    //cancelJump();
+                }
+                //cancelJump();
             }
 
             //increment jump charge

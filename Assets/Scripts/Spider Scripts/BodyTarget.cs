@@ -27,6 +27,7 @@ public class BodyTarget : MonoBehaviour
 
     //direction to rotate the body in
     private Vector3 rotDirection;
+    private Vector3 averageNormal;
 
     // Start is called before the first frame update
     void Start()
@@ -43,25 +44,23 @@ public class BodyTarget : MonoBehaviour
 
         //initial rot driection to avoid glitches in first frame
         rotDirection = transform.up;
+        averageNormal = Vector3.zero;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        averageNormal = GetAverageNormal(1);
 
-        //Find the average nornal of all of the points the leg are on and whether its on the ground
-        Vector3 averageNormal = Vector3.zero;
+        //spider is grounded if any legs are touching a collider
         isGrounded = false;
         for (int i=0;i<castObjects.Length; i++)
         {
-            averageNormal += castObjects[i].castNormal;
             if (castObjects[i].isConnected)
             {
                 isGrounded = true;
             }
-            
         }
-        averageNormal = averageNormal.normalized;
 
         if (applyForce)
         {
@@ -109,5 +108,56 @@ public class BodyTarget : MonoBehaviour
             pc.canJump = false;
         }
 
+    }
+
+    struct NormalMap
+    {
+        public int index;
+        public float normalDiffernece;
+    }
+    private Vector3 GetAverageNormal(int outliers)
+    {
+        //Find the average nornal of all of the points the leg are on and whether its on the ground
+        Vector3 averageNormal = Vector3.zero;
+
+        //get total differences between fellow normals
+        List<NormalMap> normalList = new List<NormalMap>();
+        for (int i=0; i <castObjects.Length; i++)
+        {
+            NormalMap m = new NormalMap();
+            m.index = i;
+            m.normalDiffernece = 0;
+            for (int j=0; j<castObjects.Length; j++)
+            {
+                if (i!=j)
+                {
+                    m.normalDiffernece += (castObjects[i].castNormal - castObjects[j].castNormal).magnitude;
+                }
+            }
+            normalList.Add(m);
+        }
+
+        //sort normalList
+        for (int i=1; i<normalList.Count; i++)
+        {
+            if (i==0)
+            {
+                i = 1;
+            }
+            if (normalList[i].normalDiffernece < normalList[i-1].normalDiffernece)
+            {
+                NormalMap temp = normalList[i];
+                normalList[i] = normalList[i - 1];
+                normalList[i - 1] = temp;
+                i -= 2;
+            }
+        }
+
+
+        for (int i = 0; i < normalList.Count - outliers; i++)
+        {
+            averageNormal += castObjects[normalList[i].index].castNormal;
+        }
+        return averageNormal.normalized;
     }
 }

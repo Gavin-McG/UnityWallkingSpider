@@ -120,7 +120,7 @@ public class CastFromObject : MonoBehaviour
         //legs anticipate step direction
         if ((rb.velocity-ml.averageVelocity).magnitude > velThreashhold)
         {
-            castDirRot += Vector3.Cross(movementObject.transform.up, Vector3.Cross(rb.velocity-ml.averageVelocity, movementObject.transform.up)).normalized * velFactor;
+            castDirRot += Vector3.Cross(movementObject.transform.up, Vector3.Cross(rb.velocity-tc.velocity, movementObject.transform.up)).normalized * velFactor;
         }
         return castDirRot;
     }
