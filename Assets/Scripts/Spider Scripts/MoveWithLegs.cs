@@ -33,7 +33,7 @@ public class MoveWithLegs : MonoBehaviour
             {
                 averageVelocity += trackColliders[i].velocity;
             }
-            averageVelocity /= 8;
+            averageVelocity /= trackColliders.Length;
 
             Vector3 offset = averageVelocity - rb.velocity;
             //rb.AddForce(offset.normalized * Mathf.Min(offset.magnitude, followThreshold) * followForce);

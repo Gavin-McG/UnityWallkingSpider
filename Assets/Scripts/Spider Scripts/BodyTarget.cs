@@ -50,7 +50,7 @@ public class BodyTarget : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        averageNormal = GetAverageNormal(1);
+        averageNormal = GetAverageNormal(2);
 
         //spider is grounded if any legs are touching a collider
         isGrounded = false;

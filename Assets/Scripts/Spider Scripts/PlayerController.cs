@@ -57,15 +57,16 @@ public class PlayerController : MonoBehaviour
         //player can only move when attached to the ground
         if (bt.isGrounded)
         {
+            Vector3 moveDirection = Vector3.zero;
             //forward and back
             if (Input.GetKey(KeyCode.W))
             {
-                rb.AddForce(transform.forward * speed * Time.deltaTime);
+                moveDirection += transform.forward;
                 cancelJump();
             }
             if (Input.GetKey(KeyCode.S))
             {
-                rb.AddForce(transform.forward * -speed * Time.deltaTime);
+                moveDirection += -transform.forward;
                 cancelJump();
             }
 
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    rb.AddForce(transform.right * -0.9f * speed * Time.deltaTime);
+                    moveDirection += -transform.right;
                     cancelJump();
                 }
                 else
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    rb.AddForce(transform.right * 0.9f * speed * Time.deltaTime);
+                    moveDirection += transform.right;
                     cancelJump();
                 }
                 else
@@ -97,6 +98,9 @@ public class PlayerController : MonoBehaviour
                 }
                 //cancelJump();
             }
+
+            moveDirection = moveDirection.normalized;
+            rb.AddForce(moveDirection * speed * Time.deltaTime);
 
             //increment jump charge
             if (chargingJump)
