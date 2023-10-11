@@ -39,7 +39,7 @@ public class ApproachTarget : MonoBehaviour
             Vector3 targetProj = Vector3.Cross(transform.up, Vector3.Cross(targetPos - transform.position, transform.up));
             //Debug.Log(targetProj);
             float angle = Vector3.SignedAngle(transform.forward, targetProj, transform.up);
-            Debug.Log(angle);
+            //Debug.Log(angle);
 
             if (angle > 10)
             {

@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
     private HoldManager hm; //player's HoldManager
     private MoveWithLegs ml; //player's MoveWithLegs
 
-    private LayerMask mask;
+    private LayerMask objMask;
+    private LayerMask npcMask;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +43,8 @@ public class PlayerController : MonoBehaviour
         hm = GetComponent<HoldManager>();
         ml = GetComponent<MoveWithLegs>();
 
-        mask = LayerMask.GetMask("Pickup");
+        objMask = LayerMask.GetMask("Pickup");
+        npcMask = LayerMask.GetMask("NPC");
     }
 
     // Update is called once per frame
@@ -145,10 +147,13 @@ public class PlayerController : MonoBehaviour
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, pickupDist, mask))
+            if (Physics.Raycast(ray, out hit, pickupDist, objMask))
             {
-                Debug.DrawLine(ray.origin, hit.point, Color.green);
                 hm.UpdateObject(hit.collider.gameObject);
+            }
+            else if (Physics.Raycast(ray, out hit, pickupDist, npcMask))
+            {
+                hit.collider.GetComponent<EngageDialogue>().Engage(gameObject);
             }
         }
         //drop object
