@@ -14,9 +14,10 @@ public class DialogueManager : MonoBehaviour
 
     public Interaction currentInteraction;
 
+    private int dialogueStage = 0;
     private string currentText = "";
-    private float charDelay = 0.1f;
-    private float textTime;
+    private float charDelay = 0.01f;
+    private float textTime = 0;
 
     // Update is called once per frame
     void Update()
@@ -25,27 +26,39 @@ public class DialogueManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (currentText.Length < currentInteraction.mainDialogue.Length)
+                if (currentText.Length < currentInteraction.mainDialogue[dialogueStage].Length)
                 {
-                    currentText = currentInteraction.mainDialogue;
+                    currentText = currentInteraction.mainDialogue[dialogueStage];
                 }
-                else
+                else if (dialogueStage < currentInteraction.mainDialogue.Length-1)
+                {
+                    currentText = "";
+                    dialogueStage++;
+                }
+                else 
                 {
                     SetReplys();
                 }
             }
-            textTime += Time.fixedDeltaTime;
-            while (currentText.Length < currentInteraction.mainDialogue.Length && charDelay > textTime)
+
+            if (currentText.Length < currentInteraction.mainDialogue[dialogueStage].Length)
             {
-                currentText += currentInteraction.mainDialogue[currentText.Length];
+                textTime += Time.fixedDeltaTime;
+            }
+            while (currentText.Length < currentInteraction.mainDialogue[dialogueStage].Length && charDelay < textTime)
+            {
+                currentText += currentInteraction.mainDialogue[dialogueStage][currentText.Length];
                 textTime -= charDelay;
             }
+
+            dialogue.transform.Find("Dialogue Text").GetComponent<TMP_Text>().text = currentText;
         }
+
     }
 
     public void ActivateDialogue(Interaction newInteration)
     {
-        Debug.Assert(currentInteraction != null);
+        Debug.Assert(newInteration != null);
 
         currentInteraction = newInteration;
 
@@ -55,6 +68,7 @@ public class DialogueManager : MonoBehaviour
         dialogue.SetActive(true);
         prompts.SetActive(false);
 
+        dialogueStage = 0;
         isDialogueActive = true;
         currentText = "";
     }
@@ -74,12 +88,15 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        dialogue.SetActive(false);
+        prompts.SetActive(true);
+
         Debug.Assert(currentInteraction.responses.Length <= replys.Length);
 
         for (int i=0; i<currentInteraction.responses.Length; i++)
         {
             replys[i].SetActive(true);
-            replys[i].transform.Find("Prompt Text").GetComponent<TextMeshPro>().text = currentInteraction.responses[i].prompt;
+            replys[i].transform.Find("Prompt Text").GetComponent<TMP_Text>().text = currentInteraction.responses[i].prompt;
         }
         for (int i=currentInteraction.responses.Length; i<replys.Length; i++)
         {

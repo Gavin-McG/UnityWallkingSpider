@@ -7,8 +7,8 @@ public class Interaction : MonoBehaviour
 {
     public string interactionName;
 
-    [TextArea(15, 20)]
-    public string mainDialogue;
+    [TextArea(5, 20)]
+    public string[] mainDialogue;
     [System.Serializable] public struct Response
     {
         public string prompt;
