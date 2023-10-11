@@ -12,7 +12,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject prompts;
     public GameObject[] replys;
 
-    public Interaction currentInteraction;
+    private Interaction currentInteraction;
+    private ConversationResponse cr;
 
     private int dialogueStage = 0;
     private string currentText = "";
@@ -24,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (isDialogueActive)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyUp(KeyCode.E))
             {
                 if (currentText.Length < currentInteraction.mainDialogue[dialogueStage].Length)
                 {
@@ -56,7 +57,19 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    public void ActivateDialogue(Interaction newInteration)
+    public void StartDialogue(Interaction interaction, ConversationResponse conversationResponse)
+    {
+        ActivateDialogue(interaction);
+        cr = conversationResponse;
+    }
+
+    public void choosePath(int opt)
+    {
+        Debug.Assert(opt < currentInteraction.responses.Length);
+        ActivateDialogue(currentInteraction.responses[opt].reply);
+    }
+
+    private void ActivateDialogue(Interaction newInteration)
     {
         Debug.Assert(newInteration != null);
 
@@ -85,6 +98,7 @@ public class DialogueManager : MonoBehaviour
         if (currentInteraction.responses.Length == 0)
         {
             endDialogue();
+            cr.Respond(currentInteraction.returnCode);
             return;
         }
 
@@ -102,11 +116,5 @@ public class DialogueManager : MonoBehaviour
         {
             replys[i].SetActive(false);
         }
-    }
-
-    public void choosePath(int opt)
-    {
-        Debug.Assert(opt < currentInteraction.responses.Length);
-        ActivateDialogue(currentInteraction.responses[opt].reply);
     }
 }

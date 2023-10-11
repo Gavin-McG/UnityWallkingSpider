@@ -114,65 +114,67 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //start jumping process
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Time.timeScale > 0)
         {
-            jumpTime = 0;
-            chargingJump = true;
-            bt.heightMultiplier = 1;
-        }
-
-        //start jump
-        if (Input.GetKeyUp(KeyCode.Space) && chargingJump)
-        {
-            //disbale forces from legs temproarily
-            bt.applyForce = false;
-            bt.isGrounded = false;
-            ml.enabled = false;
-            Invoke("EnableBT", 0.3f);
-
-            //reset variable used in charging
-            cancelJump();
-            canJump = false;
-
-            //force of jump
-            rb.AddForce(jumpPower * (Quaternion.AngleAxis(jumpAngle, transform.right) * transform.up) * (0.3f + 0.7f * jumpTime / chargeDuration));
-        }
-
-
-        //pickup object
-        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && !hm.isHolding)
-        {
-            //find the closest pickupable object directly in front of the spider
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, pickupDist, objMask))
+            //start jumping process
+            if (Input.GetKeyDown(KeyCode.Space) && canJump)
             {
-                hm.UpdateObject(hit.collider.gameObject);
+                jumpTime = 0;
+                chargingJump = true;
+                bt.heightMultiplier = 1;
             }
-            else if (Physics.Raycast(ray, out hit, pickupDist, npcMask))
+
+            //start jump
+            if (Input.GetKeyUp(KeyCode.Space) && chargingJump)
             {
-                hit.collider.GetComponent<EngageDialogue>().Engage(gameObject);
+                //disbale forces from legs temproarily
+                bt.applyForce = false;
+                bt.isGrounded = false;
+                ml.enabled = false;
+                Invoke("EnableBT", 0.3f);
+
+                //reset variable used in charging
+                cancelJump();
+                canJump = false;
+
+                //force of jump
+                rb.AddForce(jumpPower * (Quaternion.AngleAxis(jumpAngle, transform.right) * transform.up) * (0.3f + 0.7f * jumpTime / chargeDuration));
             }
-        }
-        //drop object
-        else if (Input.GetKeyDown(KeyCode.E) && hm.isHolding)
-        {
-            hm.dropObject(0);
-        }
-        //throw object
-        else if (Input.GetKeyDown(KeyCode.F) && hm.isHolding)
-        {
-            if (bt.isGrounded)
+
+
+            //pickup object
+            if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && !hm.isHolding)
             {
-                hm.dropObject(dropForce);
+                //find the closest pickupable object directly in front of the spider
+                Ray ray = new Ray(transform.position, transform.forward);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, pickupDist, objMask))
+                {
+                    hm.UpdateObject(hit.collider.gameObject);
+                }
+                else if (Physics.Raycast(ray, out hit, pickupDist, npcMask))
+                {
+                    hit.collider.GetComponent<EngageDialogue>().Engage(gameObject);
+                }
             }
-            else
+            //drop object
+            else if (Input.GetKeyDown(KeyCode.E) && hm.isHolding)
             {
-                hm.dropObject(dropForce*0.4f);
+                hm.dropObject(0);
             }
-            
+            //throw object
+            else if (Input.GetKeyDown(KeyCode.F) && hm.isHolding)
+            {
+                if (bt.isGrounded)
+                {
+                    hm.dropObject(dropForce);
+                }
+                else
+                {
+                    hm.dropObject(dropForce * 0.4f);
+                }
+            }
         }
     }
 

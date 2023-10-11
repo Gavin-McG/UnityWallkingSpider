@@ -259,6 +259,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &332522994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8090369725256693637, guid: a815fe6386ebeb14c82839c3de7d9fea, type: 3}
+  m_PrefabInstance: {fileID: 8090369725477818999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &332522998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332522994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4956e8dfa36c51747b46c3b2d856b6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptNum: 0
 --- !u!1 &431791084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8090369725350185371, guid: a815fe6386ebeb14c82839c3de7d9fea, type: 3}
@@ -681,11 +699,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f12ffcb1e0a662a4d86ad1a61ab8966a, type: 3}
+--- !u!1 &1157102104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8090369726478936175, guid: a815fe6386ebeb14c82839c3de7d9fea, type: 3}
+  m_PrefabInstance: {fileID: 8090369725477818999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1157102108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157102104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4956e8dfa36c51747b46c3b2d856b6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptNum: 1
 --- !u!4 &1175244664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3293901609308868550, guid: ac40b34901049de4e817d7d7c716f7a6, type: 3}
   m_PrefabInstance: {fileID: 3293901609131408733}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1311275931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3509808588865277231, guid: 92ef9b809ed00044da1048e292487793, type: 3}
+  m_PrefabInstance: {fileID: 1419574099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1311275947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311275931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3152c799cbe2d40bf9c4629c525032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockPrefab: {fileID: 8110094818889227402, guid: fc80e99ad998e0d429aea15bfbee5d5a, type: 3}
 --- !u!1 &1320598357
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +753,8 @@ GameObject:
   - component: {fileID: 1320598358}
   - component: {fileID: 1320598361}
   - component: {fileID: 1320598360}
+  - component: {fileID: 1320598364}
+  - component: {fileID: 1320598363}
   m_Layer: 0
   m_Name: Conversation1
   m_TagString: Untagged
@@ -720,8 +776,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionName: Basic reply
   mainDialogue:
-  - This is just a basic test of the dialog system so Ill just put some random text
-    here
+  - This is just a basic test of the dialogue system so Ill just put some random
+    text here
   - Here's some random options to choose from. It doesnt matter which you pick. Again,
     This is still all just for testing
   responses:
@@ -729,6 +785,7 @@ MonoBehaviour:
     reply: {fileID: 1320598361}
   - prompt: Pick this option to see reply 2
     reply: {fileID: 1320598360}
+  returnCode: 0
 --- !u!4 &1320598359
 Transform:
   m_ObjectHideFlags: 0
@@ -758,9 +815,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionName: Reply 2
   mainDialogue:
-  - You picked replay 2!
-  - Whatre you still doing here?
-  responses: []
+  - You picked reply 2!
+  - What're you still doing here?
+  - Was there something else you needed?
+  responses:
+  - prompt: Yea
+    reply: {fileID: 1320598364}
+  - prompt: No
+    reply: {fileID: 1320598363}
+  returnCode: 0
 --- !u!114 &1320598361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,6 +840,7 @@ MonoBehaviour:
   mainDialogue:
   - You picked reply 1!
   responses: []
+  returnCode: 1
 --- !u!114 &1320598362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,6 +854,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstInteraction: {fileID: 1320598358}
+--- !u!114 &1320598363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320598357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755947e4ae585584f88c53012b14eca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionName: No
+  mainDialogue:
+  - Okay, then. See ya
+  responses: []
+  returnCode: 3
+--- !u!114 &1320598364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320598357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755947e4ae585584f88c53012b14eca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionName: Yes
+  mainDialogue:
+  - You want another block, dont you?
+  - Fine, here
+  responses: []
+  returnCode: 2
 --- !u!1001 &1419574099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -908,7 +1007,6 @@ MonoBehaviour:
   - {fileID: 750648739}
   - {fileID: 922704532}
   - {fileID: 2107136354}
-  currentInteraction: {fileID: 0}
 --- !u!4 &1426579543
 Transform:
   m_ObjectHideFlags: 0
@@ -924,6 +1022,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1516239515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8090369726455343340, guid: a815fe6386ebeb14c82839c3de7d9fea, type: 3}
+  m_PrefabInstance: {fileID: 8090369725477818999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1516239519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516239515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4956e8dfa36c51747b46c3b2d856b6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptNum: 2
 --- !u!1 &1518160541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,6 +1244,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8090369725350185371, guid: a815fe6386ebeb14c82839c3de7d9fea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090369725937514342, guid: a815fe6386ebeb14c82839c3de7d9fea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8090369726922131753, guid: a815fe6386ebeb14c82839c3de7d9fea, type: 3}
       propertyPath: m_Pivot.x
       value: 0

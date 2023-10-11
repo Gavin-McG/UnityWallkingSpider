@@ -9,10 +9,13 @@ public class Interaction : MonoBehaviour
 
     [TextArea(5, 20)]
     public string[] mainDialogue;
+
     [System.Serializable] public struct Response
     {
         public string prompt;
         public Interaction reply;
     }
     public Response[] responses;
+
+    public int returnCode;
 }
