@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class EngageDialogue : MonoBehaviour
 {
+    public Interaction startInteraction;
     private bool isTurning;
     private ApproachTarget at;
     private Rigidbody rb;
     private GameObject targetObject;
+
+    private static DialogueManager dm;
 
     private void Start()
     {
         at = GetComponent<ApproachTarget>();
         rb = GetComponent<Rigidbody>();
 
+        dm = GameObject.Find("Game Manager").GetComponent<DialogueManager>();
     }
 
     private void FixedUpdate()
@@ -40,19 +44,17 @@ public class EngageDialogue : MonoBehaviour
 
     public void Engage(GameObject obj)
     {
-        isTurning = true;
-        at.enabled = false;
-        targetObject = obj;
+        if (startInteraction != null)
+        {
+            isTurning = true;
+            at.enabled = false;
+            targetObject = obj;
+        }
     }
     private void BeginDialogue()
     {
-        Time.timeScale = 0;
-    }
-
-    private void EndDialogue()
-    {
+        dm.ActivateDialogue(startInteraction);
         isTurning = false;
         at.enabled = true;
-        Time.timeScale = 1;
     }
 }
