@@ -1127,6 +1127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
+  center: {fileID: 3509808588865277231}
   offset: {x: -0.5, y: 0, z: 0}
 --- !u!135 &8033583759771156168
 SphereCollider:
@@ -2126,6 +2127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
+  center: {fileID: 3509808588865277231}
   offset: {x: 0.5, y: 0, z: 0}
 --- !u!135 &6986401137202622419
 SphereCollider:
@@ -2202,9 +2204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a83550711584e4c9ea3164be9abba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canJump: 0
   speed: 19000
   rotateSpeed: 4400
+  canJump: 0
   jumpPower: 3400
   jumpAngle: 20
   chargeDuration: 0.8
@@ -2264,6 +2266,7 @@ MonoBehaviour:
   obj: {fileID: 0}
   goalOffset: {x: 0, y: 1.5, z: 3}
   limitDistance: 0.5
+  maxDistance: 1
   repelStrength: 500
   effectiveDrag: 0.7
 --- !u!114 &3509808588865277200

@@ -11,12 +11,14 @@ public class HoldPosition : MonoBehaviour
 
     public Vector3 goalOffset;//ideal offset from body
     public float limitDistance;//maximum distance that the object can be from the offset
+    public float maxDistance;
     public float repelStrength;//strength of attraction of the object towards the ideal offset
     public float effectiveDrag;//multiplier of object's velocity to prevent unnatural looking swinging
 
     //rigidbodies
     private Rigidbody rb;
     private Rigidbody objRb;
+    private RestrictMotion objRm;
 
     //hold the direction towards the ideal offset
     private Vector3 angleDirection = Vector3.zero; 
@@ -26,7 +28,7 @@ public class HoldPosition : MonoBehaviour
     {
         //get rigidbodies
         rb = GetComponent<Rigidbody>();
-        UpdateObjectRb();
+        UpdateObjectComp();
     }
 
     // Update is called once per frame
@@ -48,6 +50,18 @@ public class HoldPosition : MonoBehaviour
 
             //update object's rotation to this transform's rotation
             obj.transform.rotation = transform.rotation;
+
+            //run operation for if a held object has a restricted range of motion
+            objRm.RestrictTransform();
+
+            //Keep player in range of held object
+            currentOffset = obj.transform.position - transform.position;
+            angleDirection = currentOffset - goalOffsetRot;
+            if (angleDirection.magnitude > maxDistance)
+            {
+                rb.MovePosition(transform.position + angleDirection.normalized * (angleDirection.magnitude - maxDistance));
+                rb.velocity = Vector3.Project(rb.velocity, currentOffset);
+            }
         }
     }
 
@@ -58,16 +72,20 @@ public class HoldPosition : MonoBehaviour
         objRb.velocity *= effectiveDrag;
     }
 
-    //get rigidbody from a newly picked up object
-    private void UpdateObjectRb()
+    //get rigidbody and restrictMotion from a newly picked up object
+    private void UpdateObjectComp()
     {
         objRb = obj.GetComponent<Rigidbody>();
+        objRm = obj.GetComponent <RestrictMotion>();
+        if (objRm == null) {
+            objRm = obj.AddComponent<RestrictMotion>();
+        }
     }
 
     //swap with a new object
     public void UpdateObj(GameObject newObj)
     {
         obj = newObj;
-        UpdateObjectRb();
+        UpdateObjectComp();
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicButton : MonoBehaviour
+public class BasicButton : Interactible
 {
     public Material offMeterial;
     public Material onMeterial;
@@ -10,7 +10,6 @@ public class BasicButton : MonoBehaviour
     public string[] tags;
 
     public int triggerCount = 0;
-    public bool triggered = false;
 
     private MeshRenderer meshRenderer;
 
@@ -18,12 +17,6 @@ public class BasicButton : MonoBehaviour
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnCollisionEnter(Collision collision)
