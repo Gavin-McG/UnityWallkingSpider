@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 3509808588084874159}
   - component: {fileID: 3509808588084874158}
   m_Layer: 7
-  m_Name: SpiderNPC
+  m_Name: SpiderNPC2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1190,7 +1190,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3509808588427861371}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1318,7 +1318,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3509808588665826629}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1525,7 +1525,7 @@ GameObject:
   - component: {fileID: 3509808588865277216}
   - component: {fileID: 3509808588865277219}
   - component: {fileID: 3509808588865277200}
-  - component: {fileID: 8193310053412802458}
+  - component: {fileID: 2123947149804875103}
   - component: {fileID: 9192939851328974856}
   - component: {fileID: 4090571789588764590}
   - component: {fileID: 3509808588865277212}
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heightOffset: 1.4
   attractStength: 40
-  rotateStrength: 100
+  rotateStrength: 450
   velMultiplier: 0.8
   ignoreSensors: 0
   heightMultiplier: 1
@@ -1597,7 +1597,7 @@ MonoBehaviour:
   averageVelocity: {x: 0, y: 0, z: 0}
   followForce: 0.7
   followThreshold: 10000
---- !u!114 &8193310053412802458
+--- !u!114 &2123947149804875103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1606,14 +1606,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3509808588865277231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80a5860a09487444987f5dc04616ebc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f5fadc6b1ab84e42b222cd0d9a292ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 19000
-  rotateSpeed: 1600
-  targetPos: {x: 0, y: 0, z: 0}
-  wander: 0
-  wanderDist: 70
+  rotateSpeed: 4400
+  canJump: 0
+  jumpPower: 12000
+  jumpAngle: 20
+  chargeDuration: 0.8
+  paths: []
+  loop: 0
 --- !u!114 &9192939851328974856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,6 +1629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d32486d9eb540d4fa7d147f0d6724bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conversation: {fileID: 0}
 --- !u!136 &4090571789588764590
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1636,8 +1640,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.33
-  m_Height: 3.9
+  m_Radius: 1.56
+  m_Height: 4.38
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.41}
 --- !u!54 &3509808588865277212
@@ -1671,7 +1675,7 @@ MonoBehaviour:
   tether: {fileID: 3509808588947783247}
   target: {fileID: 3509808587890308186}
   legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
-  kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
+  kneePrefab: {fileID: 5932354632219975048, guid: 574af8022df43434d9755e7437d861fc, type: 3}
   legLength: 0
   diameter: 0
   hasKnee: 0
@@ -1692,7 +1696,7 @@ MonoBehaviour:
   tether: {fileID: 3509808588947783247}
   target: {fileID: 3509808587923902176}
   legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
-  kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
+  kneePrefab: {fileID: 5932354632219975048, guid: 574af8022df43434d9755e7437d861fc, type: 3}
   legLength: 0
   diameter: 0
   hasKnee: 0
@@ -1713,7 +1717,7 @@ MonoBehaviour:
   tether: {fileID: 3509808588947783247}
   target: {fileID: 3509808588400018402}
   legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
-  kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
+  kneePrefab: {fileID: 5932354632219975048, guid: 574af8022df43434d9755e7437d861fc, type: 3}
   legLength: 0
   diameter: 0
   hasKnee: 0
@@ -1734,7 +1738,7 @@ MonoBehaviour:
   tether: {fileID: 3509808588947783247}
   target: {fileID: 3509808587964793478}
   legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
-  kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
+  kneePrefab: {fileID: 5932354632219975048, guid: 574af8022df43434d9755e7437d861fc, type: 3}
   legLength: 0
   diameter: 0
   hasKnee: 0
@@ -1755,7 +1759,7 @@ MonoBehaviour:
   tether: {fileID: 3509808589251379188}
   target: {fileID: 3509808588000133258}
   legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
-  kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
+  kneePrefab: {fileID: 5932354632219975048, guid: 574af8022df43434d9755e7437d861fc, type: 3}
   legLength: 0
   diameter: 0
   hasKnee: 0
@@ -1776,7 +1780,7 @@ MonoBehaviour:
   tether: {fileID: 3509808589251379188}
   target: {fileID: 3509808587786685924}
   legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
-  kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
+  kneePrefab: {fileID: 5932354632219975048, guid: 574af8022df43434d9755e7437d861fc, type: 3}
   legLength: 0
   diameter: 0
   hasKnee: 0
@@ -1797,7 +1801,7 @@ MonoBehaviour:
   tether: {fileID: 3509808589251379188}
   target: {fileID: 3509808587921745249}
   legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
-  kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
+  kneePrefab: {fileID: 5932354632219975048, guid: 574af8022df43434d9755e7437d861fc, type: 3}
   legLength: 0
   diameter: 0
   hasKnee: 0
@@ -1818,7 +1822,7 @@ MonoBehaviour:
   tether: {fileID: 3509808589251379188}
   target: {fileID: 3509808588717387685}
   legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
-  kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
+  kneePrefab: {fileID: 5932354632219975048, guid: 574af8022df43434d9755e7437d861fc, type: 3}
   legLength: 0
   diameter: 0
   hasKnee: 0
@@ -1874,7 +1878,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3509808588881878510}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2002,7 +2006,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3509808588889447436}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2956,7 +2960,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3509808589178761546}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3096,7 +3100,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4d2162bc03ecd1d4d81874f6fd6c0ede, type: 2}
+  - {fileID: 2100000, guid: 57fbe2c68fb533d4a93f1a79e7c3e483, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3181,7 +3185,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3509808589282743472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3348,7 +3352,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3509808589436035996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3606,7 +3610,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3509808589512516772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

@@ -19,7 +19,7 @@ public class BodyTarget : MonoBehaviour
     //components
     private CastFromObject[] castObjects;
     private Rigidbody rb;
-    private PlayerController pc;
+    private SpiderController sc;
     private MoveWithLegs ml;
 
     //stores initial vlaues for drag to switch between
@@ -35,7 +35,7 @@ public class BodyTarget : MonoBehaviour
     {
         //get components
         rb = GetComponent<Rigidbody>();
-        pc = GetComponent<PlayerController>();
+        sc = GetComponent<SpiderController>();
         ml = GetComponent<MoveWithLegs>();
         castObjects = transform.parent.transform.Find("Sensor Zones").GetComponentsInChildren<CastFromObject>();
 
@@ -96,21 +96,14 @@ public class BodyTarget : MonoBehaviour
             rb.drag = drag;
             rb.angularDrag = angularDrag;
             rb.useGravity = false;
-            if (pc!=null)
-            {
-                pc.canJump = true;
-            }
+            sc.canJump = true;
         }
         else
         {
             rb.drag = 0.1f;
             rb.angularDrag = 0.1f;
             rb.useGravity = true;
-            //rb.AddForce(Vector3.up * -gravity);
-            if (pc!=null)
-            {
-                pc.canJump = false;
-            }
+            sc.canJump = false;
         }
 
     }

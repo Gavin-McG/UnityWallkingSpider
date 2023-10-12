@@ -6,6 +6,6 @@ public class ConversationResponse : MonoBehaviour
 {
     public virtual void Respond(int code) 
     {
-        Debug.Log("Dafault Convo Response");
+        //Debug.Log("Dafault Convo Response");
     }
 }

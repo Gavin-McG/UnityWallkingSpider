@@ -2149,13 +2149,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3509808588865277216}
-  - component: {fileID: 3509808588865277217}
+  - component: {fileID: 8562329287812603220}
   - component: {fileID: 3509808588865277219}
   - component: {fileID: 3509808588865277214}
   - component: {fileID: 3509808588865277213}
   - component: {fileID: 3509808588865277200}
-  - component: {fileID: 3509808588865277215}
   - component: {fileID: 3509808588865277212}
+  - component: {fileID: 1641286495001976775}
   - component: {fileID: 3509808588865277211}
   - component: {fileID: 3509808588865277210}
   - component: {fileID: 3509808588865277209}
@@ -2164,7 +2164,7 @@ GameObject:
   - component: {fileID: 3509808588865277222}
   - component: {fileID: 3509808588865277221}
   - component: {fileID: 3509808588865277220}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2186,10 +2186,11 @@ Transform:
   - {fileID: 3509808588166542860}
   - {fileID: 3509808588947783232}
   - {fileID: 3509808589251379189}
+  - {fileID: 1674577100810155783}
   m_Father: {fileID: 3509808588084874159}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3509808588865277217
+--- !u!114 &8562329287812603220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2198,16 +2199,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3509808588865277231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9375feb375a914cbc6bce5e1b3408e, type: 3}
+  m_Script: {fileID: 11500000, guid: 56a83550711584e4c9ea3164be9abba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canJump: 0
   speed: 19000
-  rotateSpeed: 1600
-  canJump: 1
-  jumpPower: 3250
-  jumpAngle: 30
+  rotateSpeed: 4400
+  jumpPower: 3400
+  jumpAngle: 20
   chargeDuration: 0.8
-  pickupDist: 5
+  pickupDist: 4
   dropForce: 30
 --- !u!114 &3509808588865277219
 MonoBehaviour:
@@ -2223,7 +2224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heightOffset: 1.4
   attractStength: 40
-  rotateStrength: 100
+  rotateStrength: 450
   velMultiplier: 0.8
   ignoreSensors: 2
   heightMultiplier: 1
@@ -2280,20 +2281,6 @@ MonoBehaviour:
   averageVelocity: {x: 0, y: 0, z: 0}
   followForce: 0.7
   followThreshold: 10000
---- !u!136 &3509808588865277215
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3509808588865277231}
-  m_Material: {fileID: 13400000, guid: ae7ba9d09d08e2f47bcbcd6b8928237f, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.48
-  m_Height: 1.24
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.64}
 --- !u!54 &3509808588865277212
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2310,6 +2297,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!136 &1641286495001976775
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3509808588865277231}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.56
+  m_Height: 4.38
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.41}
 --- !u!114 &3509808588865277211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2324,7 +2325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tether: {fileID: 3509808588947783247}
   target: {fileID: 3509808587890308186}
-  legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
+  legPrefab: {fileID: 1103095993211975880, guid: 03f790b535e9a0846999b8e950630d70, type: 3}
   kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
   legLength: 0
   diameter: 0
@@ -2345,7 +2346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tether: {fileID: 3509808588947783247}
   target: {fileID: 3509808587923902176}
-  legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
+  legPrefab: {fileID: 1103095993211975880, guid: 03f790b535e9a0846999b8e950630d70, type: 3}
   kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
   legLength: 0
   diameter: 0
@@ -2366,7 +2367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tether: {fileID: 3509808588947783247}
   target: {fileID: 3509808588400018402}
-  legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
+  legPrefab: {fileID: 1103095993211975880, guid: 03f790b535e9a0846999b8e950630d70, type: 3}
   kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
   legLength: 0
   diameter: 0
@@ -2387,7 +2388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tether: {fileID: 3509808588947783247}
   target: {fileID: 3509808587964793478}
-  legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
+  legPrefab: {fileID: 1103095993211975880, guid: 03f790b535e9a0846999b8e950630d70, type: 3}
   kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
   legLength: 0
   diameter: 0
@@ -2408,7 +2409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tether: {fileID: 3509808589251379188}
   target: {fileID: 3509808588000133258}
-  legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
+  legPrefab: {fileID: 1103095993211975880, guid: 03f790b535e9a0846999b8e950630d70, type: 3}
   kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
   legLength: 0
   diameter: 0
@@ -2429,7 +2430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tether: {fileID: 3509808589251379188}
   target: {fileID: 3509808587786685924}
-  legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
+  legPrefab: {fileID: 1103095993211975880, guid: 03f790b535e9a0846999b8e950630d70, type: 3}
   kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
   legLength: 0
   diameter: 0
@@ -2450,7 +2451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tether: {fileID: 3509808589251379188}
   target: {fileID: 3509808587921745249}
-  legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
+  legPrefab: {fileID: 1103095993211975880, guid: 03f790b535e9a0846999b8e950630d70, type: 3}
   kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
   legLength: 0
   diameter: 0
@@ -2471,7 +2472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tether: {fileID: 3509808589251379188}
   target: {fileID: 3509808588717387685}
-  legPrefab: {fileID: 9077312362034709956, guid: f03905f31e2acde42aa7f55ec78dc81a, type: 3}
+  legPrefab: {fileID: 1103095993211975880, guid: 03f790b535e9a0846999b8e950630d70, type: 3}
   kneePrefab: {fileID: 5285375717698865913, guid: 0721ed283e71ba9439f39d77e94cf045, type: 3}
   legLength: 0
   diameter: 0
@@ -2926,7 +2927,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 57fbe2c68fb533d4a93f1a79e7c3e483, type: 2}
+  - {fileID: 2100000, guid: 4d2162bc03ecd1d4d81874f6fd6c0ede, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4346,6 +4347,52 @@ MonoBehaviour:
   mainCollider: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   angularVel: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3731737504830368793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674577100810155783}
+  - component: {fileID: 8216258110013516546}
+  m_Layer: 7
+  m_Name: MiddleMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1674577100810155783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3731737504830368793}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3509808588865277216}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8216258110013516546
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3731737504830368793}
+  m_Material: {fileID: 13400000, guid: ae7ba9d09d08e2f47bcbcd6b8928237f, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.48
+  m_Height: 1.24
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.64}
 --- !u!1 &3811786431295028082
 GameObject:
   m_ObjectHideFlags: 0

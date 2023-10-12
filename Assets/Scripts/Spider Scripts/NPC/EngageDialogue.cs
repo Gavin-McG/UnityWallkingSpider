@@ -7,7 +7,7 @@ public class EngageDialogue : MonoBehaviour
     [SerializeField] GameObject conversation;
     private bool isTurning;
     private bool isQueueing;
-    private ApproachTarget at;
+    private SpiderController sc;
     private Rigidbody rb;
     private GameObject targetObject;
 
@@ -18,11 +18,15 @@ public class EngageDialogue : MonoBehaviour
 
     private void Start()
     {
-        at = GetComponent<ApproachTarget>();
+        sc = GetComponent<SpiderController>();
         rb = GetComponent<Rigidbody>();
 
         dm = GameObject.Find("Game Manager").GetComponent<DialogueManager>();
-        firstInteraction = conversation.GetComponent<BeginInteraction>().firstInteraction;
+        BeginInteraction bi = conversation.GetComponent<BeginInteraction>();
+        if (bi != null)
+        {
+            firstInteraction = bi.firstInteraction;
+        }
 
         cr = GetComponent<ConversationResponse>();
         if (cr == null)
@@ -40,11 +44,11 @@ public class EngageDialogue : MonoBehaviour
 
             if (angle > 10)
             {
-                rb.AddTorque(transform.up * (at.rotateSpeed * Time.deltaTime));
+                rb.AddTorque(transform.up * (sc.rotateSpeed * Time.deltaTime));
             }
             else if (angle < -10)
             {
-                rb.AddTorque(transform.up * (-at.rotateSpeed * Time.deltaTime));
+                rb.AddTorque(transform.up * (-sc.rotateSpeed * Time.deltaTime));
             }
             else
             {
@@ -60,7 +64,7 @@ public class EngageDialogue : MonoBehaviour
         {
             isTurning = true;
             isQueueing = true;
-            at.enabled = false;
+            sc.enabled = false;
             targetObject = obj;
         }
     }
@@ -68,7 +72,7 @@ public class EngageDialogue : MonoBehaviour
     {
         dm.StartDialogue(firstInteraction, cr);
         isQueueing = false;
-        at.enabled = true;
+        sc.enabled = true;
     }
 
     public void UpdateConversation(GameObject newConvo)

@@ -3,19 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : SpiderController
 {
     //Control the body using the Player's input
-
-    public float speed;
-    public float rotateSpeed;
-
-    [Space(10)]
-
-    public bool canJump;
-    public float jumpPower;
-    public float jumpAngle;
-    public float chargeDuration;
 
     [Space(10)]
 

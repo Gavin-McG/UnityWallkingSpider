@@ -4,11 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class ApproachTarget : MonoBehaviour
+public class ApproachTarget : SpiderController
 {
-    public float speed;
-    public float rotateSpeed;
-
     public Vector3 targetPos;
 
     [Space(10)]
