@@ -42,12 +42,17 @@ public class TrackCollider : MonoBehaviour
 
     private void UpdateVelocity()
     {
-        if (mainCollider != null)
+        if (mainCollider != null && Time.deltaTime!=0)
         {
             angularVel = mainCollider.transform.rotation * Quaternion.Inverse(colliderRotation);
             Vector3 newPos = angularVel * (transform.position - colliderPosition) + mainCollider.transform.position;
             velocity = newPos - transform.position;
             velocity /= Time.deltaTime;
+        }
+        else
+        {
+            velocity = Vector3.zero;
+            angularVel = Quaternion.identity;
         }
     }
 
