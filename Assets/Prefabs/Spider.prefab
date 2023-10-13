@@ -621,7 +621,7 @@ MonoBehaviour:
   castShift: 5
   castCountUp: 10
   castCountDown: 9
-  velFactor: 0.6
+  velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
   castPoint: {x: 0, y: 0, z: 0}
@@ -751,7 +751,7 @@ MonoBehaviour:
   castShift: 5
   castCountUp: 10
   castCountDown: 9
-  velFactor: 0.6
+  velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
   castPoint: {x: 0, y: 0, z: 0}
@@ -2849,7 +2849,7 @@ MonoBehaviour:
   castShift: 5
   castCountUp: 10
   castCountDown: 9
-  velFactor: 0.6
+  velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
   castPoint: {x: 0, y: 0, z: 0}
@@ -3124,7 +3124,7 @@ MonoBehaviour:
   castShift: 5
   castCountUp: 10
   castCountDown: 9
-  velFactor: 0.6
+  velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
   castPoint: {x: 0, y: 0, z: 0}
@@ -3254,7 +3254,7 @@ MonoBehaviour:
   castShift: 5
   castCountUp: 10
   castCountDown: 9
-  velFactor: 0.6
+  velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
   castPoint: {x: 0, y: 0, z: 0}
@@ -3423,7 +3423,7 @@ MonoBehaviour:
   castShift: 5
   castCountUp: 10
   castCountDown: 9
-  velFactor: 0.6
+  velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
   castPoint: {x: 0, y: 0, z: 0}
@@ -3553,7 +3553,7 @@ MonoBehaviour:
   castShift: 5
   castCountUp: 10
   castCountDown: 9
-  velFactor: 0.6
+  velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
   castPoint: {x: 0, y: 0, z: 0}
@@ -4203,7 +4203,7 @@ MonoBehaviour:
   castShift: 5
   castCountUp: 10
   castCountDown: 9
-  velFactor: 0.6
+  velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
   castPoint: {x: 0, y: 0, z: 0}

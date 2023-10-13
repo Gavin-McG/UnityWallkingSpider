@@ -31,6 +31,7 @@ public class CastFromObject : MonoBehaviour
     [SerializeField] float velFactor; //amount to change ray direction using the velocity direction
     [SerializeField] float velThreashhold; //velocity required to change ray direction with VelFactor
     private Rigidbody rb;
+    private Vector3 pastPos;
     private MoveWithLegs ml;
 
 
@@ -61,7 +62,7 @@ public class CastFromObject : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Create new directions of cast by rotating to the center object's rotation
         UpdateNeutralDirection();
@@ -105,9 +106,12 @@ public class CastFromObject : MonoBehaviour
         //Create new directions of cast by rotating to the center object's rotation
         castDirRot = (centerObject.transform.rotation * castDir).normalized;
         //legs anticipate step direction
-        if ((rb.velocity-ml.averageVelocity).magnitude > velThreashhold)
+        Vector3 velocity = (rb.position - pastPos) / Time.deltaTime - ml.averageVelocity;
+        pastPos = rb.position;
+        if (velocity.magnitude > velThreashhold)
         {
-            castDirRot += Vector3.Cross(movementObject.transform.up, Vector3.Cross(rb.velocity-tc.velocity, movementObject.transform.up)).normalized * velFactor;
+            castDirRot += Vector3.ProjectOnPlane(velocity*velFactor,centerObject.transform.up);
+            Debug.Log(velocity.sqrMagnitude);
         }
         return castDirRot;
     }
