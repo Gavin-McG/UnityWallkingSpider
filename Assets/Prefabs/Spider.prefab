@@ -620,7 +620,7 @@ MonoBehaviour:
   castDir: {x: 0, y: 0, z: 0}
   castShift: 5
   castCountUp: 10
-  castCountDown: 9
+  castCountDown: 10
   velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
@@ -750,7 +750,7 @@ MonoBehaviour:
   castDir: {x: 0, y: 0, z: 0}
   castShift: 5
   castCountUp: 10
-  castCountDown: 9
+  castCountDown: 10
   velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
@@ -2188,7 +2188,6 @@ Transform:
   - {fileID: 3509808588166542860}
   - {fileID: 3509808588947783232}
   - {fileID: 3509808589251379189}
-  - {fileID: 1674577100810155783}
   - {fileID: 1833699574200265956}
   - {fileID: 4995369697532633080}
   m_Father: {fileID: 3509808588084874159}
@@ -2848,7 +2847,7 @@ MonoBehaviour:
   castDir: {x: 0, y: 0, z: 0}
   castShift: 5
   castCountUp: 10
-  castCountDown: 9
+  castCountDown: 10
   velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
@@ -3056,7 +3055,7 @@ MonoBehaviour:
   castDir: {x: 0, y: 0, z: 0}
   castShift: 5
   castCountUp: 10
-  castCountDown: 9
+  castCountDown: 10
   velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
@@ -3186,7 +3185,7 @@ MonoBehaviour:
   castDir: {x: 0, y: 0, z: 0}
   castShift: 5
   castCountUp: 10
-  castCountDown: 9
+  castCountDown: 10
   velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
@@ -3355,7 +3354,7 @@ MonoBehaviour:
   castDir: {x: 0, y: 0, z: 0}
   castShift: 5
   castCountUp: 10
-  castCountDown: 9
+  castCountDown: 10
   velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
@@ -3485,7 +3484,7 @@ MonoBehaviour:
   castDir: {x: 0, y: 0, z: 0}
   castShift: 5
   castCountUp: 10
-  castCountDown: 9
+  castCountDown: 10
   velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
@@ -4069,7 +4068,7 @@ MonoBehaviour:
   castDir: {x: 0, y: 0, z: 0}
   castShift: 5
   castCountUp: 10
-  castCountDown: 9
+  castCountDown: 10
   velFactor: 0.05
   velThreashhold: 3
   castNormal: {x: 0, y: 0, z: 0}
@@ -4219,52 +4218,6 @@ MonoBehaviour:
   mainCollider: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   angularVel: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &3731737504830368793
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1674577100810155783}
-  - component: {fileID: 8216258110013516546}
-  m_Layer: 7
-  m_Name: MiddleMesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1674577100810155783
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3731737504830368793}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3509808588865277216}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8216258110013516546
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3731737504830368793}
-  m_Material: {fileID: 13400000, guid: ae7ba9d09d08e2f47bcbcd6b8928237f, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.48
-  m_Height: 1.24
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.64}
 --- !u!1 &3811786431295028082
 GameObject:
   m_ObjectHideFlags: 0
@@ -4553,7 +4506,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3509808588865277216}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1947380957694253142
 MeshFilter:
@@ -4884,7 +4837,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a404fdd6c2b9d9b42881c790cbd9e557, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a404fdd6c2b9d9b42881c790cbd9e557, type: 3}
       propertyPath: m_LocalScale.x
