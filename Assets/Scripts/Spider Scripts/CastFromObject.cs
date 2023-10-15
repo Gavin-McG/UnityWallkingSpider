@@ -114,6 +114,7 @@ public class CastFromObject : MonoBehaviour
 
         //legs anticipate step direction
         Vector3 velocity = (rb.position - pastPos) / Time.deltaTime - ml.averageVelocity;
+        pastFw = Vector3.ProjectOnPlane(pastFw, rb.transform.up);
         float angle = Vector3.SignedAngle(pastFw, rb.transform.forward, rb.transform.up) / Time.deltaTime;
         pastPos = rb.position;
         pastFw = rb.transform.forward;
