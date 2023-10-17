@@ -13,14 +13,10 @@ public class ApproachTarget : SpiderController
     public bool wander;
     public float wanderDist;
 
-    private Rigidbody rb; //player's rigidbbody
-    private BodyTarget bt;
-
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        bt = GetComponent<BodyTarget>();
+        base.Start();
 
         if (wander)
         {
@@ -28,7 +24,7 @@ public class ApproachTarget : SpiderController
         }
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         if (bt.isGrounded)

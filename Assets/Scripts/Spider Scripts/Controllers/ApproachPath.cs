@@ -21,21 +21,14 @@ public class ApproachPath : SpiderController
     public bool loop;
     private int pathsInd = 0;
 
-    private Rigidbody rb; //player's rigidbbody
-    private BodyTarget bt;
-    private MoveWithLegs ml;
-
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        bt = GetComponent<BodyTarget>();
-        ml = GetComponent<MoveWithLegs>();
+        base.Start();
 
         chargingJump = paths[pathsInd].jump;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (bt.isGrounded)
@@ -101,11 +94,7 @@ public class ApproachPath : SpiderController
 
     private void Jump()
     {
-        //disbale forces from legs temproarily
-        bt.applyForce = false;
-        bt.isGrounded = false;
-        ml.enabled = false;
-        Invoke("EnableBT", 0.3f);
+        JumpProtocol();
 
         //reset variable used in charging
         cancelJump();
@@ -114,12 +103,6 @@ public class ApproachPath : SpiderController
 
         //force of jump
         rb.AddForce(jumpPower * (Quaternion.AngleAxis(jumpAngle, transform.right) * transform.up) * (0.3f + 0.7f * jumpTime / chargeDuration));
-    }
-
-    private void EnableBT()
-    {
-        bt.applyForce = true;
-        ml.enabled = true;
     }
 
     //stop charging process

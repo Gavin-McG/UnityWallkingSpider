@@ -16,22 +16,15 @@ public class PlayerController : SpiderController
     private float heightReduction = 0.4f;
     private bool chargingJump = false;
 
-    private Rigidbody rb; //player's rigidbbody
-    private BodyTarget bt; //player's BodyTarget
-    private HoldManager hm; //player's HoldManager
-    private MoveWithLegs ml; //player's MoveWithLegs
+    
 
     private LayerMask objMask;
     private LayerMask npcMask;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        //get components
-        rb = GetComponent<Rigidbody>();
-        bt = GetComponent<BodyTarget>();
-        hm = GetComponent<HoldManager>();
-        ml = GetComponent<MoveWithLegs>();
+        base.Start();
 
         objMask = LayerMask.GetMask("Pickup");
         npcMask = LayerMask.GetMask("NPC");
@@ -102,8 +95,9 @@ public class PlayerController : SpiderController
         }
     }
 
-    private void Update()
+    public void Update()
     {
+        
         if (Time.timeScale > 0)
         {
             //start jumping process
@@ -117,11 +111,7 @@ public class PlayerController : SpiderController
             //start jump
             if (Input.GetKeyUp(KeyCode.Space) && chargingJump)
             {
-                //disbale forces from legs temproarily
-                bt.applyForce = false;
-                bt.isGrounded = false;
-                ml.enabled = false;
-                Invoke("EnableBT", 0.3f);
+                JumpProtocol();
 
                 //reset variable used in charging
                 cancelJump();
@@ -168,12 +158,7 @@ public class PlayerController : SpiderController
         }
     }
 
-    //enable the physics from bodyTarget
-    private void EnableBT()
-    {
-        bt.applyForce = true;
-        ml.enabled = true;
-    }
+    
 
     //stop charging process
     private void cancelJump()
