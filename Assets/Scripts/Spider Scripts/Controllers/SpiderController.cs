@@ -34,6 +34,7 @@ public class SpiderController : MonoBehaviour
         bt.applyForce = false;
         bt.isGrounded = false;
         ml.enabled = false;
+        CancelInvoke();
         Invoke("EnableBT", 0.3f);
     }
 

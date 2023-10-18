@@ -13,10 +13,11 @@ public class MushroomBounce : MonoBehaviour
     {
         timer -=Time.deltaTime;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (timer < 0)
+        if (timer < 0 && !other.isTrigger)
         {
+            Debug.Log(other.gameObject.name);
             Rigidbody rb = other.GetComponent<Rigidbody>();
             rb.velocity = Vector3.ProjectOnPlane(rb.velocity, transform.up);
             rb.AddForce(transform.up * bounceForce);
